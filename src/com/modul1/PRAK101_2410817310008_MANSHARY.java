@@ -24,7 +24,7 @@ public class PRAK101_2410817310008_MANSHARY {
         int bulan = input.nextInt();
         while (bulan < 1 || bulan > 12) {
             System.out.print("Bulan tidak valid, masukkan kembali (1-12): ");
-            bulan = input.nextInt();
+            bulan = input.nextInt(); 
         }
 
         System.out.print("Masukkan Tahun Lahir: ");
