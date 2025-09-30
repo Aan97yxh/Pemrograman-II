@@ -11,14 +11,14 @@ public class PRAK102_2410817310008_MANSHARY {
 
         int i = 0;
 
-        while (i < 10) {
+        while (i < 11) {
             if (angka % 5 == 0) {
                 int hasil = (angka / 5) - 1;
                 System.out.print(hasil);
             } else {
                 System.out.print(angka);
             }
-            if (i < 9) {
+            if (i < 10) {
                 System.out.print(", ");
             }
             angka++;

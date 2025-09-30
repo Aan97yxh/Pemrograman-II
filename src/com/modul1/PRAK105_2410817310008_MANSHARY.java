@@ -7,12 +7,24 @@ public class PRAK105_2410817310008_MANSHARY {
 	
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-
-        System.out.print("Masukkan jari-jari: ");
-        double r = input.nextDouble();
-
-        System.out.print("Masukkan tinggi: ");
-        double t = input.nextDouble();
+		
+		double r, t;
+		
+		do {
+            System.out.print("Masukkan jari-jari: ");
+            r = input.nextDouble();
+            if (r <= 0) {
+                System.out.println("Jari-jari harus lebih dari 0, silakan masukkan lagi.");
+            }
+        } while (r <= 0);
+		
+		do {
+            System.out.print("Masukkan tinggi: ");
+            t = input.nextDouble();
+            if (t <= 0) {
+                System.out.println("Tinggi harus lebih dari 0, silakan masukkan lagi.");
+            }
+        } while (t <= 0);
 
         double volume = PHI * r * r * t;
 
