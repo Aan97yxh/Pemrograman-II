@@ -15,9 +15,17 @@ public class PRAK101_2410817310008_MANSHARY {
 
         System.out.print("Masukkan Tanggal Lahir: ");
         int tanggal = input.nextInt();
+        while (tanggal < 1 || tanggal > 31) {
+            System.out.print("Tanggal tidak valid, masukkan kembali (1-31): ");
+            tanggal = input.nextInt();
+        }
 
         System.out.print("Masukkan Bulan Lahir: ");
         int bulan = input.nextInt();
+        while (bulan < 1 || bulan > 12) {
+            System.out.print("Bulan tidak valid, masukkan kembali (1-12): ");
+            bulan = input.nextInt();
+        }
 
         System.out.print("Masukkan Tahun Lahir: ");
         int tahun = input.nextInt();
@@ -41,5 +49,4 @@ public class PRAK101_2410817310008_MANSHARY {
         input.close();
 
 	}
-
 }
