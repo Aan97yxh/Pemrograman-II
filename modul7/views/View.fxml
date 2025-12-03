@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PelangganController">
+
+    <children>
+
+        <!-- HEADER -->
+        <Label layoutX="263.0" layoutY="-1.0" text="Toko Buku Aan" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <Separator layoutX="3.0" layoutY="27.0" prefWidth="690.0" />
+
+        <!-- TABPANE -->
+        <TabPane layoutX="1.0" layoutY="35.0" prefHeight="515.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE">
+
+            <tabs>
+
+                <!-- TAB 1: CARI BUKU -->
+                <Tab style="-fx-background-color: #4CAF50;" text="Cari Buku">
+                    <content>
+                        <AnchorPane prefHeight="360.0" prefWidth="670.0" style="-fx-background-color: #87CEFA;">
+                            <children>
+                                <Label layoutX="315.0" layoutY="14.0" style="-fx-font-weight: bold; -fx-font-size: 14px;" text="Cari Buku" />
+
+                                <Label layoutX="26.0" layoutY="60.0" style="-fx-font-weight: bold;" text="Cek Buku:" />
+                                <TextField fx:id="txtCariBuku" layoutX="100.0" layoutY="56.0" prefHeight="26.0" prefWidth="435.0" promptText="Cari berdasarkan judul atau penulis" />
+                                <Button fx:id="btnCariBuku" layoutX="301.0" layoutY="96.0" prefWidth="100.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Cari" />
+								<Button fx:id="btnRefreshCari" layoutX="549.0" layoutY="56.0" onAction="#onRefreshCari" prefWidth="100.0" style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-font-weight: bold;" text="Refresh" />
+
+                                <Separator layoutX="16.0" layoutY="140.0" prefHeight="3.0" prefWidth="670.0" />
+
+                                <!-- Tabel buku untuk hasil pencarian -->
+                                <TableView fx:id="tblCariBuku" layoutX="14.0" layoutY="152.0" prefHeight="297.0" prefWidth="674.0">
+                                    <columns>
+                                        <TableColumn fx:id="colCariBukuId" prefWidth="60.0" text="ID" />
+                                        <TableColumn fx:id="colCariJudul" prefWidth="300.0" text="Judul Buku" />
+                                        <TableColumn fx:id="colCariPenulis" prefWidth="220.0" text="Penulis" />
+                                        <TableColumn fx:id="colCariStok" prefWidth="80.0" text="Stok" />
+                                    </columns>
+                                </TableView>
+
+                                <Label fx:id="lblTotalCari" layoutX="18.0" layoutY="454.0" style="-fx-font-weight: bold; -fx-text-fill: #555;" text="Total Data: 0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+
+                <!-- TAB 2: INPUT DATA BUKU -->
+                <Tab style="-fx-background-color: #2196F3;" text="Input Data Buku">
+                    <content>
+                        <AnchorPane prefHeight="360.0" prefWidth="670.0" style="-fx-background-color: #87CEFA;">
+                            <children>
+                                <Label layoutX="295.0" layoutY="14.0" style="-fx-font-weight: bold; -fx-font-size: 14px;" text="Input Data Buku" />
+
+                                <!-- Form buku -->
+                                <Label layoutX="23.0" layoutY="53.0" text="Judul:" />
+                                <TextField fx:id="txtJudul" layoutX="113.0" layoutY="49.0" prefWidth="250.0" promptText="Judul Buku" />
+
+                                <Label layoutX="23.0" layoutY="93.0" text="Penulis:" />
+                                <TextField fx:id="txtPenulis" layoutX="113.0" layoutY="89.0" prefWidth="250.0" promptText="Nama Penulis" />
+
+                                <Label layoutX="23.0" layoutY="133.0" text="Harga:" />
+                                <TextField fx:id="txtHarga" layoutX="113.0" layoutY="129.0" prefWidth="250.0" promptText="99000.00" />
+
+                                <Label layoutX="23.0" layoutY="173.0" text="Stok:" />
+                                <TextField fx:id="txtStok" layoutX="113.0" layoutY="169.0" prefWidth="250.0" promptText="Jumlah Buku" />
+
+                                <!-- Tombol CRUD buku -->
+                                <VBox layoutX="378.0" layoutY="60.0" prefHeight="120.0" prefWidth="100.0" spacing="10.0">
+                                    <children>
+                                        <Button fx:id="btnAddBuku" prefWidth="100.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Add" />
+                                        <Button fx:id="btnEditBuku" prefWidth="100.0" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;" text="Edit" />
+                                        <Button fx:id="btnDeleteBuku" prefWidth="100.0" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;" text="Delete" />
+                                        <Button fx:id="btnClearBuku" prefWidth="100.0" style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-font-weight: bold;" text="Clear" />
+                                    </children>
+                                </VBox>
+
+                                <Separator layoutX="14.0" layoutY="223.0" prefHeight="3.0" prefWidth="670.0" />
+
+                                <!-- Tabel daftar buku -->
+                                <TableView fx:id="tblBuku" layoutX="14.0" layoutY="234.0" prefHeight="215.0" prefWidth="674.0">
+                                    <columns>
+                                        <TableColumn fx:id="colBukuId" prefWidth="60.0" text="ID" />
+                                        <TableColumn fx:id="colJudulTbl" prefWidth="260.0" text="Judul" />
+                                        <TableColumn fx:id="colPenulisTbl" prefWidth="180.0" text="Penulis" />
+                                        <TableColumn fx:id="colHargaTbl" prefWidth="100.0" text="Harga" />
+                                        <TableColumn fx:id="colStokTbl" prefWidth="80.0" text="Stok" />
+                                    </columns>
+                                </TableView>
+
+                                <Label fx:id="lblTotalBuku" layoutX="18.0" layoutY="454.0" style="-fx-font-weight: bold; -fx-text-fill: #555;" text="Total Data: 0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+
+                <!-- TAB 3: INPUT DATA PELANGGAN -->
+                <Tab style="-fx-background-color: #f99336;" text="Input Data Pelanggan">
+                    <content>
+                        <AnchorPane prefHeight="360.0" prefWidth="670.0" style="-fx-background-color: #87CEFA;">
+                            <children>
+                                <Label layoutX="277.0" layoutY="14.0" style="-fx-font-weight: bold; -fx-font-size: 14px;" text="Input Data Pelanggan" />
+
+                                <!-- Form pelanggan -->
+                                <Label layoutX="23.0" layoutY="53.0" text="Nama:" />
+                                <TextField fx:id="txtNama" layoutX="113.0" layoutY="49.0" prefWidth="250.0" promptText="Nama Lengkap" />
+
+                                <Label layoutX="23.0" layoutY="93.0" text="Email:" />
+                                <TextField fx:id="txtEmail" layoutX="113.0" layoutY="89.0" prefWidth="250.0" promptText="aan123@email.com" />
+
+                                <Label layoutX="23.0" layoutY="133.0" text="Telepon:" />
+                                <TextField fx:id="txtTelepon" layoutX="113.0" layoutY="129.0" prefWidth="250.0" promptText="081234567890" />
+
+                                <!-- Tombol CRUD pelanggan -->
+                                <VBox layoutX="378.0" layoutY="60.0" prefHeight="94.0" prefWidth="100.0" spacing="10.0">
+                                    <children>
+                                        <Button fx:id="btnAddPelanggan" prefWidth="100.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Add" />
+                                        <Button fx:id="btnEditPelanggan" prefWidth="100.0" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;" text="Edit" />
+                                        <Button fx:id="btnDeletePelanggan" prefWidth="100.0" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;" text="Delete" />
+                                        <Button fx:id="btnClearPelanggan" prefWidth="100.0" style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-font-weight: bold;" text="Clear" />
+                                    </children>
+                                </VBox>
+
+                                <Separator layoutX="14.0" layoutY="223.0" prefHeight="3.0" prefWidth="670.0" />
+
+                                <!-- Tabel pelanggan -->
+                                <TableView fx:id="tblPelanggan" layoutX="14.0" layoutY="234.0" prefHeight="215.0" prefWidth="674.0">
+                                    <columns>
+                                        <TableColumn fx:id="colPelangganId" prefWidth="60.0" text="ID" />
+                                        <TableColumn fx:id="colNama" prefWidth="260.0" text="Nama Pelanggan" />
+                                        <TableColumn fx:id="colEmail" prefWidth="240.0" text="Email" />
+                                        <TableColumn fx:id="colTelepon" prefWidth="100.0" text="Telepon" />
+                                    </columns>
+                                </TableView>
+
+                                <Label fx:id="lblTotalPelanggan" layoutX="18.0" layoutY="454.0" style="-fx-font-weight: bold; -fx-text-fill: #555;" text="Total Data: 0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+
+                <!-- TAB 4: FORM PENJUALAN -->
+                <Tab style="-fx-background-color: #40E0D0;" text="Form Penjualan">
+                    <content>
+                        <AnchorPane prefHeight="360.0" prefWidth="670.0" style="-fx-background-color: #87CEFA;">
+                            <children>
+                                <Label layoutX="297.0" layoutY="14.0" style="-fx-font-weight: bold; -fx-font-size: 14px;" text="Form Penjualan" />
+
+                                <!-- Form penjualan -->
+                                <Label layoutX="23.0" layoutY="53.0" text="Pelanggan:" />
+                                <ComboBox fx:id="cbPelanggan" layoutX="113.0" layoutY="49.0" prefHeight="26.0" prefWidth="250.0" promptText="Pilih Pelanggan" />
+
+                                <Label layoutX="23.0" layoutY="93.0" text="Buku:" />
+                                <ComboBox fx:id="cbBuku" layoutX="113.0" layoutY="88.0" prefHeight="26.0" prefWidth="250.0" promptText="Pilih Buku" />
+
+                                <Label layoutX="23.0" layoutY="133.0" text="Jumlah:" />
+                                <TextField fx:id="txtJumlah" layoutX="113.0" layoutY="129.0" prefHeight="26.0" prefWidth="70.0" promptText="Qty" />
+
+                                <Label layoutX="218.0" layoutY="133.0" text="Total Harga:" />
+                                <TextField fx:id="txtTotalHarga" editable="false" layoutX="297.0" layoutY="129.0" prefHeight="26.0" prefWidth="154.0" promptText="Auto" />
+
+                                <Label layoutX="23.0" layoutY="171.0" text="Tanggal Beli:" />
+                                <DatePicker fx:id="dateBeli" layoutX="113.0" layoutY="167.0" prefHeight="26.0" prefWidth="144.0" promptText="dd/mm/yyyy" />
+
+                                <!-- Tombol CRUD penjualan -->
+                                <HBox layoutX="297.0" layoutY="167.0" spacing="10">
+                                    <children>
+                                        <Button fx:id="btnAddPenjualan" prefWidth="90.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Jual" />
+                                        <Button fx:id="btnDeletePenjualan" prefWidth="90.0" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;" text="Delete" />
+                                        <Button fx:id="btnClearPenjualan" prefWidth="90.0" style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-font-weight: bold;" text="Clear" />
+                                    </children>
+                                </HBox>
+
+                                <Separator layoutX="14.0" layoutY="223.0" prefHeight="3.0" prefWidth="670.0" />
+
+                                <!-- Tabel penjualan -->
+                                <TableView fx:id="tblPenjualan" layoutX="14.0" layoutY="234.0" prefHeight="215.0" prefWidth="674.0">
+                                    <columns>
+                                        <TableColumn fx:id="colPenjualanId" prefWidth="60.0" text="ID" />
+                                        <TableColumn fx:id="colJumlahPenjualan" prefWidth="80.0" text="Jumlah" />
+                                        <TableColumn fx:id="colTotalPenjualan" prefWidth="140.0" text="Total Harga" />
+                                        <TableColumn fx:id="colTanggalPenjualan" prefWidth="140.0" text="Tanggal" />
+                                        <TableColumn fx:id="colPelangganIdPenjualan" prefWidth="120.0" text="Pelanggan ID" />
+                                        <TableColumn fx:id="colBukuIdPenjualan" prefWidth="110.0" text="Buku ID" />
+                                    </columns>
+                                </TableView>
+
+                                <Label fx:id="lblTotalPenjualan" layoutX="18.0" layoutY="454.0" style="-fx-font-weight: bold; -fx-text-fill: #555;" text="Total Data: 0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+
+            </tabs>
+        </TabPane>
+
+    </children>
+</AnchorPane>
